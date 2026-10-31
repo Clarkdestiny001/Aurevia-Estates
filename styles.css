@@ -1,5 +1,5 @@
 /* ============================================================
-   AUREVIA ESTATES — LUXURY REAL ESTATE WEBSITE
+   AUREVIA ESTATES, LUXURY REAL ESTATE WEBSITE
    STYLESHEET
    ============================================================ */
 
@@ -35,13 +35,13 @@
   --radius-full: 999px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --font-display: 'Playfair Display', Georgia, serif;
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ===== RESET & BASE ===== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 body {
   font-family: var(--font-body);
   color: var(--text-dark);
@@ -66,20 +66,6 @@ input, select, textarea { font-family: inherit; outline: none; }
   width: 0%;
   transition: width 0.1s linear;
 }
-
-/* ===== CURSOR GLOW ===== */
-.cursor-glow {
-  position: fixed;
-  width: 400px; height: 400px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,169,110,0.06) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease;
-  opacity: 0;
-}
-body:hover .cursor-glow { opacity: 1; }
 
 /* ===== BACK TO TOP ===== */
 .back-to-top {
@@ -335,7 +321,7 @@ body:hover .cursor-glow { opacity: 1; }
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.6) 50%, rgba(10,10,10,0.75) 100%);
+  background: rgba(10,10,10,0.7);
 }
 .hero-content {
   position: relative;
@@ -357,18 +343,15 @@ body:hover .cursor-glow { opacity: 1; }
 }
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(40px, 6vw, 80px);
+  font-size: clamp(36px, 5vw, 68px);
   font-weight: 600;
+  letter-spacing: -0.02em;
   color: var(--light);
   line-height: 1.1;
   margin-bottom: 24px;
   opacity: 0;
   transform: translateY(30px);
   animation: heroReveal 1s 0.5s var(--ease-out) forwards;
-}
-.hero-title em {
-  font-style: italic;
-  color: var(--gold-light);
 }
 .hero-desc {
   font-size: 18px;
@@ -508,8 +491,9 @@ body:hover .cursor-glow { opacity: 1; }
 }
 .section-title {
   font-family: var(--font-display);
-  font-size: clamp(32px, 4vw, 52px);
+  font-size: clamp(30px, 3.6vw, 44px);
   font-weight: 600;
+  letter-spacing: -0.015em;
   line-height: 1.15;
   margin-bottom: 20px;
 }
@@ -638,7 +622,7 @@ body:hover .cursor-glow { opacity: 1; }
 .property-image-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(10,10,10,0.1) 0%, rgba(10,10,10,0.4) 100%);
+  background: rgba(10,10,10,0.25);
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -916,7 +900,7 @@ body:hover .cursor-glow { opacity: 1; }
 .gallery-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(10,10,10,0.7) 0%, transparent 60%);
+  background: rgba(10,10,10,0.55);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -1006,7 +990,7 @@ body:hover .cursor-glow { opacity: 1; }
 .neighborhood-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.2) 50%, transparent 100%);
+  background: rgba(10,10,10,0.5);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -1171,108 +1155,6 @@ body:hover .cursor-glow { opacity: 1; }
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--text-muted);
-}
-
-/* ===== TESTIMONIALS ===== */
-.testimonials-slider {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-.testimonials-track {
-  display: flex;
-  transition: transform 0.6s var(--ease-out);
-}
-.testimonial-slide {
-  min-width: 100%;
-  padding: 0 20px;
-}
-.testimonial-card {
-  background: var(--light);
-  border-radius: var(--radius-xl);
-  padding: 60px;
-  text-align: center;
-  border: 1px solid var(--border-dark);
-  box-shadow: var(--shadow-md);
-}
-.testimonial-quote {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-style: italic;
-  line-height: 1.6;
-  color: var(--text-dark);
-  margin-bottom: 32px;
-}
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-}
-.testimonial-avatar {
-  width: 64px; height: 64px;
-  border-radius: var(--radius-full);
-  object-fit: cover;
-  border: 3px solid var(--gold);
-}
-.testimonial-name {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-dark);
-}
-.testimonial-role {
-  font-size: 14px;
-  color: var(--text-muted);
-}
-.testimonial-stars {
-  color: var(--gold);
-  font-size: 18px;
-  margin-top: 4px;
-  letter-spacing: 2px;
-}
-.testimonial-nav {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 40px;
-}
-.testimonial-dot {
-  width: 12px; height: 12px;
-  border-radius: var(--radius-full);
-  background: var(--light-4);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-}
-.testimonial-dot.active {
-  background: var(--gold);
-  width: 32px;
-  border-radius: var(--radius-full);
-}
-.testimonial-arrows {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 20px;
-}
-.testimonial-arrow {
-  width: 48px; height: 48px;
-  border-radius: var(--radius-full);
-  background: var(--light);
-  border: 1px solid var(--light-4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  color: var(--text-dark);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.testimonial-arrow:hover {
-  background: var(--gold);
-  color: var(--light);
-  border-color: var(--gold);
 }
 
 /* ===== MORTGAGE CALCULATOR ===== */
@@ -1538,20 +1420,6 @@ body:hover .cursor-glow { opacity: 1; }
   color: var(--dark);
   transform: translateY(-3px);
   border-color: var(--gold);
-}
-
-/* Map */
-.contact-map {
-  width: 100%;
-  height: 220px;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  position: relative;
-}
-.contact-map iframe {
-  width: 100%; height: 100%;
-  border: none;
-  filter: grayscale(100%) invert(92%) contrast(83%);
 }
 
 /* Right Panel: Contact Form */
@@ -1898,7 +1766,7 @@ body:hover .cursor-glow { opacity: 1; }
     .hero-stats { gap: 12px; bottom: 24px; padding: 0 16px; flex-wrap: nowrap; }
   .hero-stat { min-width: 0; flex: 1; max-width: 90px; }
   .hero-stat-value { font-size: 20px; }
-  .hero-stat-label { font-size: 8px; letter-spacing: 0.5px; }
+  .hero-stat-label { font-size: 9px; letter-spacing: 0.5px; }
   .section { padding: 60px 0; }
   .properties-grid,
   .why-grid,
@@ -1917,8 +1785,6 @@ body:hover .cursor-glow { opacity: 1; }
   .hero-desc { font-size: 15px; padding: 0 10px; }
   .hero-subtitle { font-size: 11px; letter-spacing: 3px; }
   .btn-primary, .btn-secondary { padding: 14px 28px; font-size: 12px; width: 100%; max-width: 280px; justify-content: center; }
-  .testimonial-card { padding: 40px 24px; }
-  .testimonial-quote { font-size: 18px; }
   .nav-container { padding: 0 20px; }
   .container { padding: 0 20px; }
   .search-panel { padding: 24px; margin-top: -40px; }
@@ -1937,7 +1803,6 @@ body:hover .cursor-glow { opacity: 1; }
   .contact-info-list { gap: 16px; }
   .contact-social-links { gap: 10px; }
   .contact-social-links a { width: 40px; height: 40px; }
-  .contact-map { height: 180px; }
   .faq-question { padding: 18px 20px; font-size: 15px; }
   .faq-item.active .faq-answer { padding: 0 20px 18px; }
   .mortgage-result { padding: 32px 24px; }

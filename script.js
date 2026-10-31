@@ -1,5 +1,5 @@
 // ============================================================
-// AUREVIA ESTATES — JAVASCRIPT
+// AUREVIA ESTATES JAVASCRIPT
 // ============================================================
 
 // ===== LOADING SCREEN =====
@@ -26,13 +26,6 @@ window.addEventListener('scroll', function() {
   } else {
     navbar.classList.remove('scrolled');
   }
-});
-
-// ===== CURSOR GLOW =====
-var cursorGlow = document.getElementById('cursorGlow');
-document.addEventListener('mousemove', function(e) {
-  cursorGlow.style.left = e.clientX + 'px';
-  cursorGlow.style.top = e.clientY + 'px';
 });
 
 // ===== BACK TO TOP =====
@@ -175,36 +168,6 @@ lightboxClose.addEventListener('click', function(e) {
 
 lightbox.addEventListener('click', closeLightbox);
 
-// ===== TESTIMONIALS SLIDER =====
-var currentSlide = 0;
-var totalSlides = 3;
-var track = document.getElementById('testimonialsTrack');
-var dots = document.querySelectorAll('.testimonial-dot');
-
-function goToSlide(index) {
-  currentSlide = index;
-  track.style.transform = 'translateX(-' + (index * 100) + '%)';
-  dots.forEach(function(dot, i) { dot.classList.toggle('active', i === index); });
-}
-
-function nextSlide() {
-  goToSlide((currentSlide + 1) % totalSlides);
-}
-
-function prevSlide() {
-  goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
-}
-
-document.querySelectorAll('.testimonial-arrow')[1].addEventListener('click', nextSlide);
-document.querySelectorAll('.testimonial-arrow')[0].addEventListener('click', prevSlide);
-
-dots.forEach(function(dot, i) {
-  dot.addEventListener('click', function() { goToSlide(i); });
-});
-
-// Auto-slide
-setInterval(nextSlide, 6000);
-
 // ===== MORTGAGE CALCULATOR =====
 var mortgagePrice = document.getElementById('mortgagePrice');
 var mortgageDown = document.getElementById('mortgageDown');
@@ -323,7 +286,7 @@ document.getElementById('contactForm').addEventListener('submit', handleContactS
 // ===== NEWSLETTER =====
 function handleNewsletter(e) {
   e.preventDefault();
-  alert('Thank you for subscribing! Welcome to the Aurevia community.');
+  alert('Thanks for subscribing.');
   e.target.reset();
 }
 
